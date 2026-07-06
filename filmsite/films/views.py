@@ -6,6 +6,16 @@ def index(request):
     return HttpResponse('Добро пожаловать на сайт фильмов!')
 
 
+def search_film(request):
+    query = request.GET.get('q', '').strip()
+    
+    if not query:
+        return HttpResponse('Пожалуйста, укажите поисковый запрос через параметр q (например, ?q=term)', status=400)
+    
+    return HttpResponse(f'Результаты поиска по запросу: {query}')
+
+
+
 def about(request):
     return HttpResponse('Сайт-каталог фильмов. Здесь собраны лучшие фильмы всех времён.')
 
