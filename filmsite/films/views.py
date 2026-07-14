@@ -16,11 +16,17 @@ def about(request):
 
 def search_film(request):
     query = request.GET.get('q', '').strip()
-    
+
     if not query:
-        return HttpResponse('Пожалуйста, укажите поисковый запрос через параметр q (например, ?q=term)', status=400)
-    
-    return HttpResponse(f'Результаты поиска по запросу: {query}')
+        return HttpResponse('Введите название фильма для поиска.', status=400)
+
+    films = Film.objects.search(query)
+    context = {
+        'films': films,
+        'query': query,
+    }
+    return render(request, 'films/search_results.html', context)
+
 
 
 def film_list(request):
@@ -33,3 +39,5 @@ def film_detail(request, film_id):
 
 def director_detail(request, director_id: int):
     return HttpResponse(f'Страница режиссёра с id={director_id}')
+
+
