@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from slugify import slugify
 
 
 class Genre(models.Model):
