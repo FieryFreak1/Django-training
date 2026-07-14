@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Фильмы{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'films:index' %}">Главная</a> |
+        <a href="{% url 'films:film_list' %}">Каталог</a> |
+        <a href="{% url 'films:about' %}">О сайте</a>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block extra_content %}{% endblock %}
+
+    <footer class="footer">
+        &copy; {% load film_tags %}{% current_year %} Сайт фильмов
+    </footer>
+</body>
+</html>
