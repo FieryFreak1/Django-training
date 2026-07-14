@@ -1,4 +1,5 @@
 {% load static %}
+{% load film_tags %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -17,10 +18,12 @@
         {% block content %}{% endblock %}
     </main>
 
-    {% block extra_content %}{% endblock %}
+    {% block extra_content %}
+        {% latest_films 3 %}
+    {% endblock %}
 
     <footer class="footer">
-        &copy; {% load film_tags %}{% current_year %} Сайт фильмов
+        &copy; {% current_year %} Сайт фильмов
     </footer>
 </body>
 </html>
