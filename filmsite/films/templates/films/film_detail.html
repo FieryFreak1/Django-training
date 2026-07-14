@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ film.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ film.title }}</h1>
+    <p><strong>Год:</strong> {{ film.year }}</p>
+    <p>{{ film.description }}</p>
+</article>
+{% endblock %}

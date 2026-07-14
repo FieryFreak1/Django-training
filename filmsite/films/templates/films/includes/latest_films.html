@@ -1,0 +1,12 @@
+<aside class="latest-films">
+    <h3>Последние фильмы</h3>
+    <ul>
+        {% for film in films %}
+            <li>
+                <strong>{{ film.title }}</strong> ({{ film.year }}) — {{ film.description }}
+            </li>
+        {% empty %}
+            <li>Нет фильмов.</li>
+        {% endfor %}
+    </ul>
+</aside>

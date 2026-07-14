@@ -1,0 +1,5 @@
+<article class="film-card">
+    <h3><a href="{% url 'films:film_detail' film.pk %}">{{ film.title }}</a></h3>
+    <p class="film-year">{{ film.year }}</p>
+    <p class="film-description">{{ film.description|truncatechars:120 }}</p>
+</article>

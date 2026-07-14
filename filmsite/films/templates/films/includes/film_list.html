@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог фильмов{% endblock %}
+
+{% block content %}
+<h1>Каталог фильмов</h1>
+<div class="films-grid">
+    {% for film in films %}
+        {% include "films/includes/film_card.html" with film=film %}
+    {% empty %}
+        <p>Фильмов пока нет.</p>
+    {% endfor %}
+</div>
+{% endblock %}
