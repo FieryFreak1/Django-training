@@ -56,3 +56,22 @@ class Film(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.year})'
+
+
+class FilmManager(models.Manager):
+
+    def high_rated(self):
+        return self.filter(rating__gte=8.0)
+
+    def by_year(self, year):
+        return self.filter(year=year)
+
+    def recent(self, count=5):
+        return self.order_by('-created_at')[:count]
+
+    def search(self, query):
+        """Поиск по названию и описанию без учёта регистра."""
+        return self.filter(
+            models.Q(title__icontains=query) |
+            models.Q(description__icontains=query)
+        )
